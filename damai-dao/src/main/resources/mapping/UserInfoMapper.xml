@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.damai.dao.mybatis.IUserinfoDao">
+	<resultMap id="BaseResultMap" type="com.damai.system.entity.Userinfo">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="userName" jdbcType="VARCHAR" property="userName" />
+		<result column="userPwd" jdbcType="VARCHAR" property="userPwd" />
+		<result column="relName" jdbcType="VARCHAR" property="relName" />
+		<result column="state" jdbcType="INTEGER" property="state" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="email" jdbcType="VARCHAR" property="email" />
+		<result column="salt" jdbcType="VARCHAR" property="salt" />
+		<result column="lastSignTime" jdbcType="TIMESTAMP" property="lastSignTime" />
+		<result column="loginTime" jdbcType="TIMESTAMP" property="loginTime" />
+		<result column="count" jdbcType="BIGINT" property="count" />
+		<result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+		<result column="operatingUser" jdbcType="VARCHAR" property="operatingUser" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, userName, userPwd, relName, state, mobile, email, salt, lastSignTime,
+		loginTime,
+		count, createTime, updateTime, operatingUser
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from s_userinfo
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from s_userinfo
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.damai.system.entity.Userinfo">
+		insert into s_userinfo (id, userName, userPwd,
+		relName, state, mobile,
+		email, salt, lastSignTime,
+		loginTime, count, createTime,
+		updateTime, operatingUser)
+		values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+		#{userpwd,jdbcType=VARCHAR},
+		#{relname,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR},
+		#{lastsigntime,jdbcType=TIMESTAMP},
+		#{logintime,jdbcType=TIMESTAMP}, #{count,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP},
+		#{updatetime,jdbcType=TIMESTAMP}, #{operatinguser,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.damai.system.entity.Userinfo">
+		insert into s_userinfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="username != null">
+				userName,
+			</if>
+			<if test="userpwd != null">
+				userPwd,
+			</if>
+			<if test="relname != null">
+				relName,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="salt != null">
+				salt,
+			</if>
+			<if test="lastsigntime != null">
+				lastSignTime,
+			</if>
+			<if test="logintime != null">
+				loginTime,
+			</if>
+			<if test="count != null">
+				count,
+			</if>
+			<if test="createtime != null">
+				createTime,
+			</if>
+			<if test="updatetime != null">
+				updateTime,
+			</if>
+			<if test="operatinguser != null">
+				operatingUser,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpwd != null">
+				#{userpwd,jdbcType=VARCHAR},
+			</if>
+			<if test="relname != null">
+				#{relname,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=INTEGER},
+			</if>
+			<if test="mobile != null">
+				#{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null">
+				#{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="lastsigntime != null">
+				#{lastsigntime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="logintime != null">
+				#{logintime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="count != null">
+				#{count,jdbcType=BIGINT},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				#{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operatinguser != null">
+				#{operatinguser,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.damai.system.entity.Userinfo">
+		update s_userinfo
+		<set>
+			<if test="username != null">
+				userName = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="userpwd != null">
+				userPwd = #{userpwd,jdbcType=VARCHAR},
+			</if>
+			<if test="relname != null">
+				relName = #{relname,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=INTEGER},
+			</if>
+			<if test="mobile != null">
+				mobile = #{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="salt != null">
+				salt = #{salt,jdbcType=VARCHAR},
+			</if>
+			<if test="lastsigntime != null">
+				lastSignTime = #{lastsigntime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="logintime != null">
+				loginTime = #{logintime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="count != null">
+				count = #{count,jdbcType=BIGINT},
+			</if>
+			<if test="createtime != null">
+				createTime = #{createtime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatetime != null">
+				updateTime = #{updatetime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="operatinguser != null">
+				operatingUser = #{operatinguser,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.damai.system.entity.Userinfo">
+		update s_userinfo
+		set userName = #{username,jdbcType=VARCHAR},
+		userPwd = #{userpwd,jdbcType=VARCHAR},
+		relName = #{relname,jdbcType=VARCHAR},
+		state = #{state,jdbcType=INTEGER},
+		mobile = #{mobile,jdbcType=VARCHAR},
+		email = #{email,jdbcType=VARCHAR},
+		salt = #{salt,jdbcType=VARCHAR},
+		lastSignTime = #{lastsigntime,jdbcType=TIMESTAMP},
+		loginTime = #{logintime,jdbcType=TIMESTAMP},
+		count = #{count,jdbcType=BIGINT},
+		createTime = #{createtime,jdbcType=TIMESTAMP},
+		updateTime = #{updatetime,jdbcType=TIMESTAMP},
+		operatingUser = #{operatinguser,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+</mapper>
