@@ -11,13 +11,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.damai.dao.jdbctemplate.JUserRoleDao;
+import com.damai.dao.jdbctemplate.JSysUserRoleDao;
 import com.damai.datasource.RoutingDataSource;
 import com.damai.datasource.RoutingStrategy;
-import com.damai.system.entity.UserRole;
+import com.damai.system.entity.SysUserRole;
 
 @Repository
-public class JUserRoleDaoImpl implements JUserRoleDao {
+public class JSysUserRoleDaoImpl implements JSysUserRoleDao {
 
 	@Autowired
     private JdbcTemplate jdbcTemplate;
@@ -29,45 +29,45 @@ public class JUserRoleDaoImpl implements JUserRoleDao {
 
 	@RoutingDataSource(RoutingStrategy.WRITE)
 	@Override
-	public int insert(UserRole record) {
+	public int insert(SysUserRole record) {
 		String sql = "INSERT INTO s_user_role(id, userID, roleID, createTime, updateTime, operatingUser) VALUES (?,?,?,?,?,?)";
         return jdbcTemplate.update(sql, UUID.randomUUID().toString(),"1","1",new Date(),new Date(),"111");
 	}
 
 	@RoutingDataSource(RoutingStrategy.READ)
 	@Override
-	public List<UserRole> selectUserRoles() {
-		return jdbcTemplate.query("SELECT * FROM s_user_role", new RowMapper<UserRole>() {
+	public List<SysUserRole> selectUserRoles() {
+		return jdbcTemplate.query("SELECT * FROM s_user_role", new RowMapper<SysUserRole>() {
             @Override
-            public UserRole mapRow(ResultSet rs, int i) throws SQLException {
-            	UserRole userRole = new UserRole();
-            	userRole.setId(rs.getString("id"));
-            	userRole.setOperatingUser(rs.getString("operatingUser"));
-                return userRole;
+            public SysUserRole mapRow(ResultSet rs, int i) throws SQLException {
+            	SysUserRole sysUserRole = new SysUserRole();
+            	sysUserRole.setId(rs.getString("id"));
+            	sysUserRole.setOperatingUser(rs.getString("operatingUser"));
+                return sysUserRole;
             }
         });
 	}
 	
 	@Override
-	public int insertSelective(UserRole record) {
+	public int insertSelective(SysUserRole record) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public UserRole selectByPrimaryKey(String id) {
+	public SysUserRole selectByPrimaryKey(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(UserRole record) {
+	public int updateByPrimaryKeySelective(SysUserRole record) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int updateByPrimaryKey(UserRole record) {
+	public int updateByPrimaryKey(SysUserRole record) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

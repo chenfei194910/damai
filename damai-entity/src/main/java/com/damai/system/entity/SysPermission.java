@@ -7,7 +7,7 @@ import java.util.Date;
  * @author ChenFei
  *
  */
-public class Permission {
+public class SysPermission {
     /**
      * 主键ID
      */

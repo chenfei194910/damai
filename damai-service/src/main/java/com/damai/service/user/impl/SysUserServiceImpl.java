@@ -7,28 +7,28 @@ import org.activiti.engine.impl.persistence.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.damai.dao.jdbctemplate.JUserRoleDao;
-import com.damai.service.user.IUserService;
-import com.damai.system.entity.UserRole;
+import com.damai.dao.jdbctemplate.JSysUserRoleDao;
+import com.damai.service.user.ISysUserService;
+import com.damai.system.entity.SysUserRole;
 import com.github.pagehelper.PageInfo;
 
 @Service
-public class UserServiceImpl implements IUserService {
+public class SysUserServiceImpl implements ISysUserService {
 
 	@Autowired
-    private JUserRoleDao jUserRoleDao;
+    private JSysUserRoleDao jSysUserRoleDao;
 	
 	public void insert() {
-		jUserRoleDao.insert(null);
+		jSysUserRoleDao.insert(null);
 	}
 	
 	
-	public List<UserRole> selectUserRoles() {
-		return jUserRoleDao.selectUserRoles();
+	public List<SysUserRole> selectUserRoles() {
+		return jSysUserRoleDao.selectUserRoles();
 	}
 	
 	
-//	public UserRole selectUserRole() {
+//	public SysUserRole selectUserRole() {
 //		return iUserRoleDao.selectByPrimaryKey("1");
 //	}
 	

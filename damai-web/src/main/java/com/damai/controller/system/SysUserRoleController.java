@@ -6,24 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.damai.service.system.IUserRoleService;
-import com.damai.system.entity.UserRole;
+import com.damai.service.system.ISysUserRoleService;
+import com.damai.system.entity.SysUserRole;
 
 
 @Controller
 @RequestMapping("/userRole")
-public class UserRoleController {
+public class SysUserRoleController {
 
 	@Autowired
-	private IUserRoleService iUserRoleService;
+	private ISysUserRoleService iUserRoleService;
 	
 	private static String PATH = "main/";
 
 	@RequestMapping("/")
 	public String queryDeployment(Map<String, Object> map) {
-		UserRole userRole = iUserRoleService.findById("1");
-		System.out.println(userRole.getId());
-		System.out.println(userRole.getCreateTime());
+		SysUserRole sysUserRole = iUserRoleService.findById("1");
+		System.out.println(sysUserRole.getId());
+		System.out.println(sysUserRole.getCreateTime());
 		return PATH + "layuiMain";
 	}
 	

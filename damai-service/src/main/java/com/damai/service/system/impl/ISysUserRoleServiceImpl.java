@@ -5,37 +5,37 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.damai.dao.mybatis.IUserRoleDao;
-import com.damai.service.system.IUserRoleService;
-import com.damai.system.entity.UserRole;
+import com.damai.dao.mybatis.ISysUserRoleDao;
+import com.damai.service.system.ISysUserRoleService;
+import com.damai.system.entity.SysUserRole;
 import com.github.pagehelper.PageInfo;
 
 @Service
-public class IUserRoleServiceImpl implements IUserRoleService {
+public class ISysUserRoleServiceImpl implements ISysUserRoleService {
 	
 	@Autowired
-    private IUserRoleDao iUserRoleDao;
+    private ISysUserRoleDao iUserRoleDao;
 	
 	
 	@Override
-	public PageInfo<UserRole> query(Map<String, Object> condition, int pageNo, int pageSize) {
+	public PageInfo<SysUserRole> query(Map<String, Object> condition, int pageNo, int pageSize) {
 		return null;
 	}
 
 	@Override
-	public UserRole findById(String id) {
-		UserRole userRole = iUserRoleDao.selectByPrimaryKey(id);
-		return userRole;
+	public SysUserRole findById(String id) {
+		SysUserRole sysUserRole = iUserRoleDao.selectByPrimaryKey(id);
+		return sysUserRole;
 	}
 
 	@Override
-	public UserRole save(UserRole entity) {
+	public SysUserRole save(SysUserRole entity) {
 		iUserRoleDao.insert(entity);
 		return entity;
 	}
 
 	@Override
-	public UserRole update(UserRole entity) {
+	public SysUserRole update(SysUserRole entity) {
 		iUserRoleDao.updateByPrimaryKey(entity);
 		return entity;
 	}

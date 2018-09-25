@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.damai.service.user.IUserService;
+import com.damai.service.user.ISysUserService;
 
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class SysUserController {
 
 	@Autowired
-	private IUserService userService;
+	private ISysUserService sysUserService;
 	
 	private static String PATH = "main/";
 
 	@RequestMapping("/")
 	public String queryDeployment(Map<String, Object> map) {
-		userService.insert();
+		sysUserService.insert();
 		return PATH + "layuiMain";
 	}
 	

@@ -5,10 +5,10 @@ import java.util.Map;
 
 import org.activiti.engine.impl.persistence.entity.UserEntity;
 
-import com.damai.system.entity.UserRole;
+import com.damai.system.entity.SysUserRole;
 import com.github.pagehelper.PageInfo;
 
-public interface IUserService {
+public interface ISysUserService {
 
     PageInfo<UserEntity> query(Map<String, Object> condition, int pageNo,
             int pageSize);
@@ -25,7 +25,7 @@ public interface IUserService {
 	void insert();
 	
 	
-	List<UserRole> selectUserRoles();
+	List<SysUserRole> selectUserRoles();
 
-//	UserRole selectUserRole();
+//	SysUserRole selectUserRole();
 }

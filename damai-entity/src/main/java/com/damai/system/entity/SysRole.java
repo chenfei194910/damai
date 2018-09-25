@@ -7,7 +7,7 @@ import java.util.Date;
  * @author ChenFei
  *
  */
-public class Role {
+public class SysRole {
     /**
      * 主键ID
      */
