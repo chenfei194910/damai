@@ -2,7 +2,7 @@ package com.damai.dao.mybatis;
 
 import com.damai.system.entity.SysUser;
 
-public interface ISysUserinfoDao {
+public interface ISysUserDao {
     int deleteByPrimaryKey(String id);
 
     int insert(SysUser record);

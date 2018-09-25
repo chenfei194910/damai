@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.damai.dao.mybatis.IRoleDao">
-	<resultMap id="BaseResultMap" type="com.damai.system.entity.Role">
+<mapper namespace="com.damai.dao.mybatis.ISysRolePermissionDao">
+	<resultMap id="BaseResultMap" type="com.damai.system.entity.SysRolePermission">
 		<id column="id" jdbcType="VARCHAR" property="id" />
-		<result column="roleName" jdbcType="VARCHAR" property="rolename" />
-		<result column="remark" jdbcType="VARCHAR" property="remark" />
+		<result column="roleID" jdbcType="VARCHAR" property="roleid" />
+		<result column="permissionID" jdbcType="VARCHAR" property="permissionid" />
 		<result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
 		<result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
 		<result column="operatingUser" jdbcType="VARCHAR" property="operatinguser" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		id, roleName, remark, createTime, updateTime, operatingUser
+		id, roleID, permissionID, createTime, updateTime, operatingUser
 	</sql>
 	<select id="selectByPrimaryKey" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
-		from s_role
+		from s_role_permission
 		where id = #{id,jdbcType=VARCHAR}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from s_role
+		delete from s_role_permission
 		where id = #{id,jdbcType=VARCHAR}
 	</delete>
-	<insert id="insert" parameterType="com.damai.system.entity.Role">
-		insert into s_role (id, roleName, remark,
+	<insert id="insert" parameterType="com.damai.system.entity.SysRolePermission">
+		insert into s_role_permission (id, roleID, permissionID,
 		createTime, updateTime, operatingUser
 		)
-		values (#{id,jdbcType=VARCHAR}, #{rolename,jdbcType=VARCHAR},
-		#{remark,jdbcType=VARCHAR},
+		values (#{id,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR},
+		#{permissionid,jdbcType=VARCHAR},
 		#{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{operatinguser,jdbcType=VARCHAR}
 		)
 	</insert>
-	<insert id="insertSelective" parameterType="com.damai.system.entity.Role">
-		insert into s_role
+	<insert id="insertSelective" parameterType="com.damai.system.entity.SysRolePermission">
+		insert into s_role_permission
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
 				id,
 			</if>
-			<if test="rolename != null">
-				roleName,
+			<if test="roleid != null">
+				roleID,
 			</if>
-			<if test="remark != null">
-				remark,
+			<if test="permissionid != null">
+				permissionID,
 			</if>
 			<if test="createtime != null">
 				createTime,
@@ -58,11 +58,11 @@
 			<if test="id != null">
 				#{id,jdbcType=VARCHAR},
 			</if>
-			<if test="rolename != null">
-				#{rolename,jdbcType=VARCHAR},
+			<if test="roleid != null">
+				#{roleid,jdbcType=VARCHAR},
 			</if>
-			<if test="remark != null">
-				#{remark,jdbcType=VARCHAR},
+			<if test="permissionid != null">
+				#{permissionid,jdbcType=VARCHAR},
 			</if>
 			<if test="createtime != null">
 				#{createtime,jdbcType=TIMESTAMP},
@@ -75,14 +75,14 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.damai.system.entity.Role">
-		update s_role
+	<update id="updateByPrimaryKeySelective" parameterType="com.damai.system.entity.SysRolePermission">
+		update s_role_permission
 		<set>
-			<if test="rolename != null">
-				roleName = #{rolename,jdbcType=VARCHAR},
+			<if test="roleid != null">
+				roleID = #{roleid,jdbcType=VARCHAR},
 			</if>
-			<if test="remark != null">
-				remark = #{remark,jdbcType=VARCHAR},
+			<if test="permissionid != null">
+				permissionID = #{permissionid,jdbcType=VARCHAR},
 			</if>
 			<if test="createtime != null">
 				createTime = #{createtime,jdbcType=TIMESTAMP},
@@ -96,10 +96,10 @@
 		</set>
 		where id = #{id,jdbcType=VARCHAR}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="com.damai.system.entity.Role">
-		update s_role
-		set roleName = #{rolename,jdbcType=VARCHAR},
-		remark = #{remark,jdbcType=VARCHAR},
+	<update id="updateByPrimaryKey" parameterType="com.damai.system.entity.SysRolePermission">
+		update s_role_permission
+		set roleID = #{roleid,jdbcType=VARCHAR},
+		permissionID = #{permissionid,jdbcType=VARCHAR},
 		createTime = #{createtime,jdbcType=TIMESTAMP},
 		updateTime = #{updatetime,jdbcType=TIMESTAMP},
 		operatingUser = #{operatinguser,jdbcType=VARCHAR}

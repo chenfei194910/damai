@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.damai.dao.mybatis.IUserinfoDao">
-	<resultMap id="BaseResultMap" type="com.damai.system.entity.Userinfo">
+<mapper namespace="com.damai.dao.mybatis.ISysUserDao">
+	<resultMap id="BaseResultMap" type="com.damai.system.entity.SysUser">
 		<id column="id" jdbcType="VARCHAR" property="id" />
 		<result column="userName" jdbcType="VARCHAR" property="userName" />
 		<result column="userPwd" jdbcType="VARCHAR" property="userPwd" />
@@ -33,7 +33,7 @@
 		delete from s_userinfo
 		where id = #{id,jdbcType=VARCHAR}
 	</delete>
-	<insert id="insert" parameterType="com.damai.system.entity.Userinfo">
+	<insert id="insert" parameterType="com.damai.system.entity.SysUser">
 		insert into s_userinfo (id, userName, userPwd,
 		relName, state, mobile,
 		email, salt, lastSignTime,
@@ -47,7 +47,7 @@
 		#{logintime,jdbcType=TIMESTAMP}, #{count,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP},
 		#{updatetime,jdbcType=TIMESTAMP}, #{operatinguser,jdbcType=VARCHAR})
 	</insert>
-	<insert id="insertSelective" parameterType="com.damai.system.entity.Userinfo">
+	<insert id="insertSelective" parameterType="com.damai.system.entity.SysUser">
 		insert into s_userinfo
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null">
@@ -138,7 +138,7 @@
 			</if>
 		</trim>
 	</insert>
-	<update id="updateByPrimaryKeySelective" parameterType="com.damai.system.entity.Userinfo">
+	<update id="updateByPrimaryKeySelective" parameterType="com.damai.system.entity.SysUser">
 		update s_userinfo
 		<set>
 			<if test="username != null">
@@ -183,7 +183,7 @@
 		</set>
 		where id = #{id,jdbcType=VARCHAR}
 	</update>
-	<update id="updateByPrimaryKey" parameterType="com.damai.system.entity.Userinfo">
+	<update id="updateByPrimaryKey" parameterType="com.damai.system.entity.SysUser">
 		update s_userinfo
 		set userName = #{username,jdbcType=VARCHAR},
 		userPwd = #{userpwd,jdbcType=VARCHAR},
